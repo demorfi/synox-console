@@ -1,20 +1,28 @@
 {
   "name": "demorfi/synox-web-api",
-  "description": "TODO",
+  "type": "library",
+  "description": "API SynoX Web",
   "keywords": [
     "synox",
-    "synox-web"
+    "synox-web",
+    "synox api"
   ],
-  "type": "framework",
   "license": "MIT",
   "authors": [
     {
       "name": "demorfi",
-      "email": "demorfi@gmail.com"
+      "email": "demorfi@gmail.com",
+      "role": "Developer"
     }
   ],
+  "support": {
+    "issues": "https://github.com/demorfi/synox-web-api/issues",
+    "source": "https://github.com/demorfi/synox-web-api"
+  },
   "require": {
-    "php": "^8.0"
+    "php": "^8.0",
+    "guzzlehttp/guzzle": "^7.8",
+    "textalk/websocket": "^1.6"
   },
   "autoload": {
     "psr-4": {
