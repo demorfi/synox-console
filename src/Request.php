@@ -92,7 +92,8 @@ class Request
     public function socket(string $host, string $token): iterable|Response
     {
         $address = sprintf('%s/?token=%s', $host, $token);
-        $client  = new WebSocketClient($address, ['return_obj' => true, 'timeout' => 30]);
+        $context = stream_context_create(['ssl' => ['verify_peer' => false]]);
+        $client  = new WebSocketClient($address, ['return_obj' => true, 'timeout' => 30, 'context' => $context]);
 
         try {
             while (true) {
