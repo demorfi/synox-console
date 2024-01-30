@@ -64,6 +64,22 @@ class Content extends ResponsePrototype
     }
 
     /**
+     * @return ?string
+     */
+    public function getHash(): ?string
+    {
+        return $this->response['hash'] ?? null;
+    }
+
+    /**
+     * @return ?string
+     */
+    public function getMagnet(): ?string
+    {
+        return $this->response['magnet'] ?? null;
+    }
+
+    /**
      * @return string
      */
     public function getPath(): string

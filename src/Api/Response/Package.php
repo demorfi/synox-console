@@ -40,6 +40,14 @@ class Package extends ResponsePrototype
     }
 
     /**
+     * @return array
+     */
+    public function getPkgSettings(): array
+    {
+        return $this->response['pkgSettings'];
+    }
+
+    /**
      * @return string
      */
     public function getSubType(): string
@@ -69,6 +77,38 @@ class Package extends ResponsePrototype
     public function getVersion(): string
     {
         return $this->response['version'];
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasAvailable(): bool
+    {
+        return $this->response['available'];
+    }
+
+    /**
+     * @return array
+     */
+    public function getRequires(): array
+    {
+        return $this->response['requires'];
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasUsesAuth(): bool
+    {
+        return $this->response['usesAuth'] ?? false;
+    }
+
+    /**
+     * @return ?array
+     */
+    public function getOnlyAllowed(): ?array
+    {
+        return $this->response['onlyAllowed'] ?? null;
     }
 
     /**

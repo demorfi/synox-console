@@ -106,9 +106,25 @@ class SearchItem extends ResponsePrototype
     /**
      * @return ?string
      */
-    public function getContent(): ?string
+    public function getDescription(): ?string
     {
-        return $this->response['content'] ?? null;
+        return $this->response['description'] ?? null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isContent(): bool
+    {
+        return isset($this->response['content']);
+    }
+
+    /**
+     * @return ?array
+     */
+    public function getContent(): ?Content
+    {
+        return isset($this->response['content']) ? new Content($this->api, (array)$this->response['content']) : null;
     }
 
     /**
