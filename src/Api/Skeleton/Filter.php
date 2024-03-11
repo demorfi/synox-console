@@ -1,10 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace SynoxWebApi\Api;
+namespace SynoxWebApi\Api\Skeleton;
 
+use SynoxWebApi\Api;
 use JsonSerializable;
 
-class RequestFilter implements JsonSerializable
+class Filter implements JsonSerializable
 {
     /**
      * @var array
@@ -15,6 +16,17 @@ class RequestFilter implements JsonSerializable
      * @var array
      */
     private array $category = [];
+
+    /**
+     * @param Api   $api
+     * @param array $packages
+     * @param array $category
+     */
+    public function __construct(protected Api $api, array $packages = [], array $category = [])
+    {
+        $this->addPackage(...$packages);
+        $this->addCategory(...$category);
+    }
 
     /**
      * @param string $name
@@ -47,6 +59,14 @@ class RequestFilter implements JsonSerializable
     }
 
     /**
+     * @return array
+     */
+    public function getCategory(): array
+    {
+        return $this->category;
+    }
+
+    /**
      * @param string ...$packageId
      * @return static
      */
@@ -55,6 +75,14 @@ class RequestFilter implements JsonSerializable
         $packageId      = array_map(fn(string $name): string => static::formatPackageName($name), $packageId);
         $this->packages = [...$this->packages, ...$packageId];
         return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPackages(): array
+    {
+        return $this->packages;
     }
 
     /**

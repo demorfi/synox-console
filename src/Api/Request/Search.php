@@ -2,23 +2,23 @@
 
 namespace SynoxWebApi\Api\Request;
 
-use SynoxWebApi\Api\{RequestPrototype, RequestFilter};
+use SynoxWebApi\Api\{RequestPrototype, Skeleton\Filter};
 use SynoxWebApi\Api\Response\{Search as SearchResponse, SearchItem as SearchItemResponse};
 use SynoxWebApi\RequestException;
 
 class Search extends RequestPrototype
 {
     /**
-     * @var ?RequestFilter
+     * @var ?Filter
      */
-    private ?RequestFilter $filters = null;
+    private ?Filter $filters = null;
 
     /**
-     * @return RequestFilter
+     * @return Filter
      */
-    public function makeFilters(): RequestFilter
+    public function makeFilters(): Filter
     {
-        return $this->filters = new RequestFilter;
+        return $this->filters = new Filter($this->api);
     }
 
     /**

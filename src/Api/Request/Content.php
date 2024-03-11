@@ -2,7 +2,7 @@
 
 namespace SynoxWebApi\Api\Request;
 
-use SynoxWebApi\Api\{RequestFilter, RequestPrototype, Response\Content as ContentResponse};
+use SynoxWebApi\Api\{Skeleton\Filter, RequestPrototype, Response\Content as ContentResponse};
 use SynoxWebApi\RequestException;
 
 class Content extends RequestPrototype
@@ -15,7 +15,7 @@ class Content extends RequestPrototype
      */
     public function fetch(string $packageId, string $fetchId): ContentResponse
     {
-        $resource = 'content/fetch/packageId/' . RequestFilter::formatPackageName($packageId);
+        $resource = 'content/fetch/packageId/' . Filter::formatPackageName($packageId);
         return new ContentResponse(
             $this->api,
             $this->client->post($resource, compact('fetchId'))->getJson()
