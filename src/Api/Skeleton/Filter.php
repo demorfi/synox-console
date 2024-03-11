@@ -86,6 +86,21 @@ class Filter implements JsonSerializable
     }
 
     /**
+     * @return array
+     */
+    public function split(): array
+    {
+        $packages = [];
+        foreach ($this->packages as $packageId) {
+            $packages[$packageId] = [
+                'category' => $this->category
+            ];
+        }
+
+        return $packages;
+    }
+
+    /**
      * @inheritdoc
      */
     public function jsonSerialize(): array

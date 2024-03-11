@@ -22,15 +22,16 @@ class Search extends RequestPrototype
     }
 
     /**
-     * @param string $query
+     * @param string  $query
+     * @param ?string $profile
      * @return SearchResponse
      * @throws RequestException
      */
-    public function create(string $query): SearchResponse
+    public function create(string $query, ?string $profile = null): SearchResponse
     {
         return new SearchResponse(
             $this->api,
-            $this->client->post('search/start', ['query' => $query, 'filters' => $this->filters ?? []])
+            $this->client->post('search/start', ['query' => $query, 'profile' => $profile, 'filters' => $this->filters ?? []])
                 ->getJson()
         );
     }

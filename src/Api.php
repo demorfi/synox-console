@@ -2,7 +2,7 @@
 
 namespace SynoxWebApi;
 
-use SynoxWebApi\Api\Request\{Content, Journal, Packages, Search, Settings};
+use SynoxWebApi\Api\Request\{Content, Journal, Packages, Profiles, Search, Settings};
 
 class Api
 {
@@ -46,6 +46,14 @@ class Api
     public function packages(): Packages
     {
         return new Packages($this, $this->client);
+    }
+
+    /**
+     * @return Profiles
+     */
+    public function profiles(): Profiles
+    {
+        return new Profiles($this, $this->client);
     }
 
     /**
