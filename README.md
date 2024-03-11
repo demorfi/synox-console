@@ -16,7 +16,8 @@ $api = new \SynoxWebApi\Api('https://synox-web.domain/api/');
 ```php
 $search = $api->search();
 $search->makeFilters()->addCategory('video')->addPackage('tpb'); // optional make filters
-foreach ($search->create('Silent Hill')->run() as $item) {
+$profile = null; // optional profile name 
+foreach ($search->create('Silent Hill', $profile)->run() as $item) {
     printf("Title: %s; Size: %s\n", $item->getTitle(), $item->getWeight());
     // download only this torrent file
     if (stripos($item->getTitle(), 'Silent Hill 2') !== false) {
@@ -40,7 +41,7 @@ $api->packages()->changeState('tpb', true); // enable this package
 ```
 
 ## Reporting issues
-If you have any issues with with the application please open an issue on [GitHub](https://github.com/demorfi/synox-web-api/issues).
+If you have any issues with the application please open an issue on [GitHub](https://github.com/demorfi/synox-web-api/issues).
 
 ## License
 SynoX Web is licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
